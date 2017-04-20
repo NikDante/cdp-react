@@ -22,6 +22,12 @@ const login = (state = initialState, action) => {
                 isInvalid: !isAuthorized,
                 passwordValue: ''
             };
+        case constants.LOG_OFF:
+            return ({
+                ...state,
+                isAuthorized: false,
+                isInvalid: false
+            });
         default:
             return state;
     }

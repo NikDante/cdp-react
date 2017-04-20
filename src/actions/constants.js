@@ -9,3 +9,7 @@ export const SEARCH = 'SEARCH';
 export const SEARCH_INPUT = 'SEARCH_INPUT';
 
 export const ADD_FORM_INPUT = 'ADD_FORM_INPUT';
+
+export const ADD_COURSE = 'ADD_COURSE';
+
+export const LOG_OFF = 'LOG_OFF';

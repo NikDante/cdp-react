@@ -1,13 +1,10 @@
 import React from 'react';
 
 const formatDuration = duration => {
-    let hours = (duration / 60).toFixed(0);
+    let hours = +(duration / 60).toFixed(0);
     let minutes = duration % 60;
 
-    hours = hours ? `${hours} hours` : null;
-    minutes = minutes ? `${minutes} minutes` : null;
-
-    return `${hours} ${minutes}`;
+    return `${hours ? `${hours} hours` : ''} ${minutes ? `${minutes} minutes` : ''}`;
 };
 
 export const CourseItem = ({id, title, duration, createDate, description, onEdit, onDelete}) => (

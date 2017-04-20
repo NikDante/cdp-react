@@ -61,3 +61,21 @@ export const deleteCourse = (courses, courseId) => {
 
     return fetchCourses();
 };
+
+export const addCourse = (title, description, date, duration, history) => {
+    let courses = [...JSON.parse(localStorage.getItem('courses')),
+        {title, description, date, duration, id: v4()}];
+
+    localStorage.setItem('courses', JSON.stringify(courses));
+
+    history.push('/courses');
+
+    return {
+        type: 'ADD_COURSE',
+        payload: courses
+    };
+};
+
+export const logOff = () => ({
+    type: 'LOG_OFF'
+});

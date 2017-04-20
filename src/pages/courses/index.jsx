@@ -18,6 +18,7 @@ class Courses extends Component {
 
         this.onSearchInput = this.onSearchInput.bind(this);
         this.onSearch = this.onSearch.bind(this);
+        this.onLogoff = this.onLogoff.bind(this);
     }
 
     componentDidMount() {
@@ -34,12 +35,17 @@ class Courses extends Component {
         searchCourses(searchValue);
     }
 
+    onLogoff() {
+        this.props.logOff();
+    }
+
     render() {
         let {courses, isAuthorized, login, searchQuery, searchValue, deleteCourse} = this.props;
 
         return (
             <div>
                 <Header
+                    onLogoff={this.onLogoff}
                     isAuthorized={isAuthorized}
                     pageTitle="Courses"
                     login={login}/>
@@ -68,6 +74,7 @@ export default withRouter(connect(
         fetchCourses: actions.fetchCourses,
         searchCourses: actions.searchCourses,
         searchInput: actions.searchInput,
-        deleteCourse: actions.deleteCourse
+        deleteCourse: actions.deleteCourse,
+        logOff: actions.logOff
     }
 )(Courses))

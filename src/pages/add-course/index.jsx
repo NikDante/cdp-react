@@ -21,6 +21,8 @@ class AddCourse extends Component {
         this.inputDescription = this.inputDescription.bind(this);
         this.inputDate = this.inputDate.bind(this);
         this.inputDuration = this.inputDuration.bind(this);
+        this.onSave = this.onSave.bind(this);
+        this.onLogoff = this.onLogoff.bind(this);
     }
 
     inputTitle(e) {
@@ -39,12 +41,23 @@ class AddCourse extends Component {
         this.props.inputAddForm('duration', e.target.value);
     }
 
+    onSave() {
+        let {title, description, date, duration, addCourse, history} = this.props;
+
+        addCourse(title, description, date, duration, history);
+    }
+
+    onLogoff() {
+        this.props.logOff();
+    }
+
     render() {
         let {title, description, date, duration, isAuthorized, login} = this.props;
 
         return (
             <div>
                 <Header
+                    onLogoff={this.onLogoff}
                     isAuthorized={isAuthorized}
                     login={login}
                     pageTitle={<Link to="/courses">Courses</Link>}
@@ -64,7 +77,8 @@ class AddCourse extends Component {
                     <FormGroup label="Duration" value={duration} onChange={this.inputDuration} type="text"/>
                     <div className="raw">
                         <div className="col-xs-6">
-                            <button className="btn btn-success btn-block" type="button">Save</button>
+                            <button onClick={this.onSave} className="btn btn-success btn-block" type="button">Save
+                            </button>
                         </div>
                         <div className="col-xs-6">
                             <button className="btn btn-danger btn-block" type="button">
@@ -78,4 +92,11 @@ class AddCourse extends Component {
     }
 }
 
-export default withRouter(connect(mapStateToProps, {inputAddForm: actions.inputAddForm})(AddCourse));
+export default withRouter(connect(
+    mapStateToProps,
+    {
+        inputAddForm: actions.inputAddForm,
+        addCourse: actions.addCourse,
+        logOff: actions.logOff
+    }
+)(AddCourse));

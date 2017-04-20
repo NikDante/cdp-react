@@ -16,6 +16,8 @@ const courses = (state = initialState, action) => {
             return {...state, searchQuery: payload};
         case constants.SEARCH_INPUT:
             return {...state, searchValue: payload};
+        case constants.ADD_COURSE:
+            return {...state, courseList: payload};
         default:
             return state;
     }
