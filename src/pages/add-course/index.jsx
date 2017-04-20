@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
     login: state.login.loginValue,
     title: state.addCourse.title,
     description: state.addCourse.description,
-    date: state.addCourse.date,
+    createDate: state.addCourse.createDate,
     duration: state.addCourse.duration,
     id: state.addCourse.id
 });
@@ -35,8 +35,7 @@ class AddCourse extends Component {
     }
 
     inputDate(e) {
-        console.log(e.target.value);
-        this.props.inputAddForm('date', e.target.value);
+        this.props.inputAddForm('createDate', e.target.value);
     }
 
     inputDuration(e) {
@@ -44,9 +43,9 @@ class AddCourse extends Component {
     }
 
     onSave() {
-        let {title, description, date, duration, addCourse, history, id} = this.props;
+        let {title, description, createDate, duration, addCourse, history, id} = this.props;
 
-        addCourse(id, title, description, date, duration, history);
+        addCourse(id, title, description, createDate, duration, history);
     }
 
     onLogoff() {
@@ -54,7 +53,7 @@ class AddCourse extends Component {
     }
 
     render() {
-        let {title, description, date, duration, isAuthorized, login} = this.props;
+        let {title, description, createDate, duration, isAuthorized, login} = this.props;
 
         return (
             <div>
@@ -75,7 +74,7 @@ class AddCourse extends Component {
                             className="form-control">
                         </textarea>
                     </div>
-                    <FormGroup label="Date" value={date} onChange={this.inputDate} type="date"/>
+                    <FormGroup label="Date" value={createDate} onChange={this.inputDate} type="date"/>
                     <FormGroup label="Duration" value={duration} onChange={this.inputDuration} type="text"/>
                     <div className="raw">
                         <div className="col-xs-6">

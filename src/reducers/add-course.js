@@ -3,7 +3,7 @@ import * as constants from '../actions/constants'
 const initialState = {
     title: '',
     description: '',
-    date: '',
+    createDate: '',
     duration: '',
     id: ''
 };

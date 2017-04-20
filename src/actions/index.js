@@ -62,10 +62,10 @@ export const deleteCourse = (courses, courseId) => {
     return fetchCourses();
 };
 
-export const addCourse = (id, title, description, date, duration, history) => {
+export const addCourse = (id, title, description, createDate, duration, history) => {
     let courses = [...JSON.parse(localStorage.getItem('courses'))
         .filter(course => course.id !== id),
-        {title, description, date, duration, id: v4()}];
+        {title, description, createDate, duration, id: v4()}];
 
     localStorage.setItem('courses', JSON.stringify(courses));
 
