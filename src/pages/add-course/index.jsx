@@ -10,7 +10,8 @@ const mapStateToProps = (state) => ({
     title: state.addCourse.title,
     description: state.addCourse.description,
     date: state.addCourse.date,
-    duration: state.addCourse.duration
+    duration: state.addCourse.duration,
+    id: state.addCourse.id
 });
 
 class AddCourse extends Component {
@@ -34,6 +35,7 @@ class AddCourse extends Component {
     }
 
     inputDate(e) {
+        console.log(e.target.value);
         this.props.inputAddForm('date', e.target.value);
     }
 
@@ -42,9 +44,9 @@ class AddCourse extends Component {
     }
 
     onSave() {
-        let {title, description, date, duration, addCourse, history} = this.props;
+        let {title, description, date, duration, addCourse, history, id} = this.props;
 
-        addCourse(title, description, date, duration, history);
+        addCourse(id, title, description, date, duration, history);
     }
 
     onLogoff() {

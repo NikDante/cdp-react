@@ -62,8 +62,9 @@ export const deleteCourse = (courses, courseId) => {
     return fetchCourses();
 };
 
-export const addCourse = (title, description, date, duration, history) => {
-    let courses = [...JSON.parse(localStorage.getItem('courses')),
+export const addCourse = (id, title, description, date, duration, history) => {
+    let courses = [...JSON.parse(localStorage.getItem('courses'))
+        .filter(course => course.id !== id),
         {title, description, date, duration, id: v4()}];
 
     localStorage.setItem('courses', JSON.stringify(courses));
@@ -78,4 +79,13 @@ export const addCourse = (title, description, date, duration, history) => {
 
 export const logOff = () => ({
     type: 'LOG_OFF'
+});
+
+export const editCourse = (course) => ({
+    type: 'EDIT_COURSE',
+    payload: {...course}
+});
+
+export const onMoveToAddCourse = () => ({
+    type: 'MOVE_TO_ADD'
 });

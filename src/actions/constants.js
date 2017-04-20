@@ -13,3 +13,7 @@ export const ADD_FORM_INPUT = 'ADD_FORM_INPUT';
 export const ADD_COURSE = 'ADD_COURSE';
 
 export const LOG_OFF = 'LOG_OFF';
+
+export const EDIT_COURSE = 'EDIT_COURSE';
+
+export const MOVE_TO_ADD = 'MOVE_TO_ADD';

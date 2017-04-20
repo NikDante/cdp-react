@@ -19,6 +19,7 @@ class Courses extends Component {
         this.onSearchInput = this.onSearchInput.bind(this);
         this.onSearch = this.onSearch.bind(this);
         this.onLogoff = this.onLogoff.bind(this);
+        this.onMoveToAdd = this.onMoveToAdd.bind(this);
     }
 
     componentDidMount() {
@@ -39,8 +40,12 @@ class Courses extends Component {
         this.props.logOff();
     }
 
+    onMoveToAdd() {
+        this.props.onMoveToAddCourse();
+    }
+
     render() {
-        let {courses, isAuthorized, login, searchQuery, searchValue, deleteCourse} = this.props;
+        let {courses, isAuthorized, login, searchQuery, searchValue, deleteCourse, editCourse} = this.props;
 
         return (
             <div>
@@ -50,6 +55,7 @@ class Courses extends Component {
                     pageTitle="Courses"
                     login={login}/>
                 <CoursesNav
+                    onAdd={this.onMoveToAdd}
                     searchValue={searchValue}
                     onSearchInput={this.onSearchInput}
                     onSearch={this.onSearch}/>
@@ -59,6 +65,10 @@ class Courses extends Component {
                             course.title.toLowerCase().includes(searchQuery.toLowerCase().trim()))
                         .map(course =>
                             <CourseItem
+                                onEdit={() => {
+                                    console.log(...course);
+                                    editCourse({...course});
+                                }}
                                 onDelete={() => deleteCourse(courses, course.id)}
                                 key={course.id}
                                 {...course}/>)
@@ -75,6 +85,8 @@ export default withRouter(connect(
         searchCourses: actions.searchCourses,
         searchInput: actions.searchInput,
         deleteCourse: actions.deleteCourse,
-        logOff: actions.logOff
+        logOff: actions.logOff,
+        onMoveToAddCourse: actions.onMoveToAddCourse,
+        editCourse: actions.editCourse
     }
 )(Courses))

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 const formatDuration = duration => {
     let hours = +(duration / 60).toFixed(0);
@@ -25,8 +26,8 @@ export const CourseItem = ({id, title, duration, createDate, description, onEdit
                 <p>{description}</p>
             </div>
             <div className="col-xs-3">
-                <button onClick={onEdit} className="btn btn-info btn-block" type="button">
-                    Edit
+                <button className="btn btn-info btn-block" type="button">
+                    <Link onClick={onEdit} to='/new'>Edit</Link>
                 </button>
                 <button onClick={onDelete} className="btn btn-danger btn-block" type="button">
                     Delete

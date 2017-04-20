@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 
-export const CoursesNav = ({searchValue, onSearchInput, onSearch}) => (
+export const CoursesNav = ({searchValue, onSearchInput, onSearch, onAdd}) => (
     <nav className="courses-nav">
         <div className="row">
             <div className="col-xs-6">
@@ -22,7 +22,7 @@ export const CoursesNav = ({searchValue, onSearchInput, onSearch}) => (
             </div>
             <div className="col-xs-4 text-right">
                 <button className="btn btn-default">
-                    <Link to='/new'>Add course</Link>
+                    <Link onClick={onAdd} to='/new'>Add course</Link>
                 </button>
             </div>
         </div>

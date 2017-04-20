@@ -4,7 +4,8 @@ const initialState = {
     title: '',
     description: '',
     date: '',
-    duration: ''
+    duration: '',
+    id: ''
 };
 
 const addCourse = (state = initialState, action) => {
@@ -13,6 +14,10 @@ const addCourse = (state = initialState, action) => {
     switch (type) {
         case constants.ADD_FORM_INPUT:
             return ({...state, [payload.field]: payload.value});
+        case constants.EDIT_COURSE:
+            return ({...payload});
+        case constants.MOVE_TO_ADD:
+            return initialState;
         default:
             return state;
     }
